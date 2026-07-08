@@ -14,5 +14,5 @@ BBLAYERS ?= " \
 	${HOME}/yocto/poky/meta-openembedded/meta-multimedia \
 	${HOME}/yocto/poky/meta-qt5 \
 	${HOME}/yocto/poky/meta-licheepizero \
-	${HOME}/yocto/meta-customdock \
+	${HOME}/yocto/meta-licheepizero-voicecommand \
 "
