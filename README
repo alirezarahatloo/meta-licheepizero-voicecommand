@@ -1,4 +1,5 @@
 Download necessary Yocto packaged listed below. Be sure to be in root of home folder.
+sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat libsdl1.2-dev xterm libmpc-dev libgmp3-dev
 
 mkdir yocto
 cd yocto
