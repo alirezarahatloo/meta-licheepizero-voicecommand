@@ -25,6 +25,7 @@ cd poky
 git clone git://git.openembedded.org/meta-openembedded --depth 1 -b kirkstone
 git clone https://github.com/meta-qt5/meta-qt5.git --depth 1 -b kirkstone
 git clone https://github.com/voloviq/meta-licheepizero --depth 1 -b kirkstone
+source oe-init-build-env ~/yocto/build/licheepizero
 ```
 
 ## 📁 Layer Contents
