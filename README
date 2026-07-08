@@ -1,41 +1,46 @@
-This README file contains information on the contents of the meta-customdock layer.
+meta-licheepizero-voicecommand
+==============================
 
-Please see the corresponding sections below for details.
+meta-licheepizero-voicecommand is a Yocto meta-layer for the LicheePi Zero Dock board.
+It provides voice command processing, SQL database connectivity, and Qt application support.
 
 Dependencies
 ============
 
-  URI: <first dependency>
-  branch: <branch name>
+  URI: https://git.yoctoproject.org/poky
+  branch: kirkstone
 
-  URI: <second dependency>
-  branch: <branch name>
+  URI: https://github.com/openembedded/meta-openembedded
+  branch: kirkstone
 
-  .
-  .
-  .
+  URI: https://github.com/meta-qt5/meta-qt5
+  branch: kirkstone
 
-Patches
-=======
-
-Please submit any patches against the meta-customdock layer to the xxxx mailing list (xxxx@zzzz.org)
-and cc: the maintainer:
-
-Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
-
-Table of Contents
-=================
-
-  I. Adding the meta-customdock layer to your build
- II. Misc
+  URI: https://github.com/lichee-pi/meta-licheepizero
+  branch: kirkstone
 
 
-I. Adding the meta-customdock layer to your build
-=================================================
+Layer Contents
+==============
 
-Run 'bitbake-layers add-layer meta-customdock'
+recipes-apps/voicecommand/    C++ voice command application with MFCC-based WAV analysis
+recipes-apps/sqlclient/       FreeTDS SQL Server client application
+recipes-myqtapp/myqtapp/      Qt5 application with SQL/ODBC database connectivity
+recipes-kernel/linux/         Kernel DTS patches for microphone and UART2 enablement
+recipes-core/init-ifupdown/   Network interfaces configuration (static IP + DHCP)
+recipes-database/freetds/     FreeTDS 1.3.10 database library recipe
+recipes-example/example/      Bitbake example recipe
 
-II. Misc
-========
 
---- replace with specific information about the meta-customdock layer ---
+Adding the meta-licheepizero-voicecommand layer to your build
+==============================================================
+
+Run the following command:
+
+  bitbake-layers add-layer meta-licheepizero-voicecommand
+
+
+Maintainer
+==========
+
+alirezarahatloo
