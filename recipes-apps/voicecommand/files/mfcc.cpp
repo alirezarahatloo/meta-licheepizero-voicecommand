@@ -171,16 +171,22 @@ void MFCC::BuildMelFilterbank(int sampleRate)
     {
         melFilterbank[m].resize(numFftBins, 0.0f);
 
-        for (int k = fftBins[m]; k <= fftBins[m + 1]; k++)
+        int binLow = std::max(0, fftBins[m]);
+        int binMid = std::max(0, std::min(numFftBins - 1, fftBins[m + 1]));
+        int binHigh = std::max(0, std::min(numFftBins - 1, fftBins[m + 2]));
+
+        for (int k = binLow; k <= binMid; k++)
         {
-            melFilterbank[m][k] =
-                (k - fftBins[m]) / (float)(fftBins[m + 1] - fftBins[m]);
+            float diff = (float)(binMid - binLow);
+            if (diff > 0.0f)
+                melFilterbank[m][k] = (k - binLow) / diff;
         }
 
-        for (int k = fftBins[m + 1]; k <= fftBins[m + 2]; k++)
+        for (int k = binMid; k <= binHigh; k++)
         {
-            melFilterbank[m][k] =
-                (fftBins[m + 2] - k) / (float)(fftBins[m + 2] - fftBins[m + 1]);
+            float diff = (float)(binHigh - binMid);
+            if (diff > 0.0f)
+                melFilterbank[m][k] = (binHigh - k) / diff;
         }
     }
 }
@@ -192,7 +198,9 @@ void MFCC::ApplyMelFilterbank(
     for (int m = 0; m < MEL_FILTERS; m++)
     {
         melEnergy[m] = 0.0f;
-        for (size_t k = 0; k < powerSpectrum.size(); k++)
+        size_t numBins = std::min(powerSpectrum.size(),
+                                  melFilterbank[m].size());
+        for (size_t k = 0; k < numBins; k++)
         {
             melEnergy[m] += powerSpectrum[k] * melFilterbank[m][k];
         }
