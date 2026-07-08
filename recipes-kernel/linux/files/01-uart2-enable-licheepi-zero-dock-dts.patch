@@ -1,0 +1,17 @@
+diff --git a/sun8i-v3s-licheepi-zero.dts.orig b/sun8i-v3s-licheepi-zero.dts
+index 5b91d8d..766a01d 100644
+--- a/arch/arm/boot/dts/sun8i-v3s-licheepi-zero.dts
++++ b/arch/arm/boot/dts/sun8i-v3s-licheepi-zero.dts
+@@ -95,6 +95,12 @@
+ 	status = "okay";
+ };
+ 
++&uart2 {
++	pinctrl-0 = <&uart2_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++};
++
+ &ehci0 {
+ 	/*phys = <&usbphy 0>;
+ 	phy-names = "usb";*/
