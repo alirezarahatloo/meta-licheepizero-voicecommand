@@ -55,10 +55,15 @@ bool MFCC::Process(const std::vector<float>& samples,
 
 void MFCC::PreEmphasis(std::vector<float>& samples)
 {
-    for (size_t i = samples.size() - 1; i >= 1; i--)
+    if (samples.empty())
+        return;
+
+    for (int i = samples.size() - 1; i > 0; --i)
     {
-        samples[i] = samples[i] - PRE_EMPHASIS * samples[i - 1];
+        samples[i] -= PRE_EMPHASIS * samples[i - 1];
     }
+
+    samples[0] *= (1.0f - PRE_EMPHASIS);
 }
 
 void MFCC::CreateFrames(const std::vector<float>& samples)
