@@ -1,46 +1,10 @@
-meta-licheepizero-voicecommand
-==============================
+Download necessary Yocto packaged listed below. Be sure to be in root of home folder.
 
-meta-licheepizero-voicecommand is a Yocto meta-layer for the LicheePi Zero Dock board.
-It provides voice command processing, SQL database connectivity, and Qt application support.
-
-Dependencies
-============
-
-  URI: https://git.yoctoproject.org/poky
-  branch: kirkstone
-
-  URI: https://github.com/openembedded/meta-openembedded
-  branch: kirkstone
-
-  URI: https://github.com/meta-qt5/meta-qt5
-  branch: kirkstone
-
-  URI: https://github.com/lichee-pi/meta-licheepizero
-  branch: kirkstone
-
-
-Layer Contents
-==============
-
-recipes-apps/voicecommand/    C++ voice command application with MFCC-based WAV analysis
-recipes-apps/sqlclient/       FreeTDS SQL Server client application
-recipes-myqtapp/myqtapp/      Qt5 application with SQL/ODBC database connectivity
-recipes-kernel/linux/         Kernel DTS patches for microphone and UART2 enablement
-recipes-core/init-ifupdown/   Network interfaces configuration (static IP + DHCP)
-recipes-database/freetds/     FreeTDS 1.3.10 database library recipe
-recipes-example/example/      Bitbake example recipe
-
-
-Adding the meta-licheepizero-voicecommand layer to your build
-==============================================================
-
-Run the following command:
-
-  bitbake-layers add-layer meta-licheepizero-voicecommand
-
-
-Maintainer
-==========
-
-alirezarahatloo
+mkdir yocto
+cd yocto
+mkdir build
+git clone git://git.yoctoproject.org/poky --depth 1 -b kirkstone
+cd poky
+git clone git://git.openembedded.org/meta-openembedded --depth 1 -b kirkstone
+git clone https://github.com/meta-qt5/meta-qt5.git --depth 1 -b kirkstone
+git clone https://github.com/voloviq/meta-licheepizero --depth 1 -b kirkstone
