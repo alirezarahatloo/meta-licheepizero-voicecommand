@@ -20,11 +20,12 @@ Run these commands from your home directory:
 mkdir yocto
 cd yocto
 mkdir build
-git clone git://git.yoctoproject.org/poky --depth 1 -b kirkstone
+git clone https://git.yoctoproject.org/poky -b kirkstone
 cd poky
-git clone git://git.openembedded.org/meta-openembedded --depth 1 -b kirkstone
+git clone https://github.com/openembedded/meta-openembedded.git -b kirkstone
 git clone https://github.com/meta-qt5/meta-qt5.git --depth 1 -b kirkstone
 git clone https://github.com/voloviq/meta-licheepizero --depth 1 -b kirkstone
+git clone https://github.com/alirezarahatloo/meta-licheepizero-voicecommand.git
 source oe-init-build-env ~/yocto/build/licheepizero
 ```
 
