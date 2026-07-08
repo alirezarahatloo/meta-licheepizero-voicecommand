@@ -2,6 +2,7 @@
 #include "mfcc.h"
 
 #include <iostream>
+#include <iomanip>
 
 int main(int argc, char *argv[])
 {
@@ -34,12 +35,30 @@ int main(int argc, char *argv[])
                      reader.GetChannels()
               << " sec" << std::endl;
 
-              MFCC mfcc;
+    MFCC mfcc;
 
-    if(!mfcc.Process(reader.GetSamples(),
-                 reader.GetSampleRate()))
+    if (!mfcc.Process(reader.GetSamples(),
+                      reader.GetSampleRate()))
     {
         return 1;
+    }
+
+    const auto& coeffs = mfcc.GetCoeffs();
+
+    std::cout << "Frame count : "
+              << coeffs.size()
+              << std::endl;
+
+    std::cout << std::fixed << std::setprecision(2);
+
+    for (size_t f = 0; f < coeffs.size(); f++)
+    {
+        std::cout << "MFCC[" << f << "]:";
+        for (int c = 0; c < 13; c++)
+        {
+            std::cout << " " << std::setw(7) << coeffs[f][c];
+        }
+        std::cout << std::endl;
     }
 
     return 0;
