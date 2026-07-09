@@ -1,16 +1,19 @@
 #include "wav_reader.h"
 #include "mfcc.h"
+#include "inference.h"
 
 #include <iostream>
 #include <iomanip>
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
+    if (argc < 2 || argc > 3)
     {
-        std::cout << "Usage: voicecommand <wav file>" << std::endl;
+        std::cout << "Usage: voicecommand <wav file> [--print-mfcc]" << std::endl;
         return 1;
     }
+
+    bool printMfcc = (argc == 3 && std::string(argv[2]) == "--print-mfcc");
 
     WavReader reader;
 
@@ -49,17 +52,39 @@ int main(int argc, char *argv[])
               << coeffs.size()
               << std::endl;
 
-    std::cout << std::fixed << std::setprecision(2);
-
-    for (size_t f = 0; f < coeffs.size(); f++)
+    if (printMfcc)
     {
-        std::cout << "MFCC[" << f << "]:";
-        for (int c = 0; c < 13; c++)
+        std::cout << std::fixed << std::setprecision(2);
+
+        for (size_t f = 0; f < coeffs.size(); f++)
         {
-            std::cout << " " << std::setw(7) << coeffs[f][c];
+            std::cout << "MFCC[" << f << "]:";
+            for (int c = 0; c < 13; c++)
+            {
+                std::cout << " " << std::setw(7) << coeffs[f][c];
+            }
+            std::cout << std::endl;
         }
-        std::cout << std::endl;
     }
+
+    // Flatten MFCC coefficients to 1D vector and classify
+    std::vector<float> mfccFlat;
+    mfccFlat.reserve(coeffs.size() * 13);
+    for (const auto& frame : coeffs)
+    {
+        for (float val : frame)
+        {
+            mfccFlat.push_back(val);
+        }
+    }
+
+    VoiceCommandClassifier classifier;
+    classifier.LoadWeights();
+    auto result = classifier.Classify(mfccFlat);
+    std::cout << "Predicted   : "
+              << VoiceCommandClassifier::LabelName(result.first)
+              << " (" << std::fixed << std::setprecision(2) << result.second << ")"
+              << std::endl;
 
     return 0;
 }

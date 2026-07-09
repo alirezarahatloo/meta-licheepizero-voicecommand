@@ -8,6 +8,9 @@ SRC_URI = "\
     file://mfcc.h \
     file://wav_reader.cpp \
     file://wav_reader.h \
+    file://inference.cpp \
+    file://inference.h \
+    file://model_weights.h \
 "
 
 S = "${WORKDIR}"
@@ -19,6 +22,7 @@ do_compile() {
         ${S}/main.cpp \
         ${S}/mfcc.cpp \
         ${S}/wav_reader.cpp \
+        ${S}/inference.cpp \
         ${LDFLAGS} \
         -lsndfile \
         -o voicecommand

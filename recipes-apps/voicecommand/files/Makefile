@@ -2,7 +2,8 @@ TARGET = voicecommand
 
 SRCS = main.cpp \
        wav_reader.cpp \
-       mfcc.cpp
+       mfcc.cpp \
+       inference.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
