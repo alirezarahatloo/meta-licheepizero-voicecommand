@@ -51,10 +51,10 @@ bitbake core-image-minimal
 ```
 
 ## Screenshot 1
-![Main Screen](images/main.png)
+![Main Screen](images/1.jepg)
 
 ## Screenshot 2
-![Settings Screen](images/settings.png)
+![Settings Screen](images/2.jpeg)
 ---
 
 _Maintainer: [alirezarahatloo](https://github.com/alirezarahatloo)_
