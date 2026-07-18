@@ -50,10 +50,10 @@ bitbake-layers add-layer meta-licheepizero-voicecommand
 bitbake core-image-minimal
 ```
 
-## Screenshot 1
+## voice command sample
 ![Main Screen](images/1.jpeg)
 
-## Screenshot 2
+## Board 
 ![Settings Screen](images/2.jpeg)
 ---
 
