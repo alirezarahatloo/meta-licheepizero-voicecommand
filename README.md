@@ -51,7 +51,7 @@ bitbake core-image-minimal
 ```
 
 ## Screenshot 1
-![Main Screen](images/1.jepg)
+![Main Screen](images/1.jpeg)
 
 ## Screenshot 2
 ![Settings Screen](images/2.jpeg)
