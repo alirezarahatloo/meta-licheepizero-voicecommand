@@ -28,6 +28,7 @@ git clone https://github.com/meta-qt5/meta-qt5.git --depth 1 -b kirkstone
 git clone https://github.com/voloviq/meta-licheepizero --depth 1 -b kirkstone
 source oe-init-build-env ~/yocto/build-licheepizero
 ```
+Copy local.conf.sample and bblayers.conf.sample to build/conf/, then rename them to local.conf and bblayers.conf respectively.
 
 ## 📁 Layer Contents
 
