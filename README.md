@@ -50,6 +50,11 @@ bitbake-layers add-layer meta-licheepizero-voicecommand
 bitbake core-image-minimal
 ```
 
+## Screenshot 1
+![Main Screen](images/main.png)
+
+## Screenshot 2
+![Settings Screen](images/settings.png)
 ---
 
 _Maintainer: [alirezarahatloo](https://github.com/alirezarahatloo)_
